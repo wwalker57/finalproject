@@ -33,15 +33,12 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     autoescape=True)
 
 DEFAULT_GUESTBOOK_NAME = 'Anon'
-DEVELOPER_KEY = "AIzaSyDbWycrphLyYoD9OJl_dPkCq7P8lV3dhek"
+DEVELOPER_KEY = "AIzaSyDbWycrphLyYoD9OJl_dPkCq7P8lV3dhek" #youtube API Key
 YOUTUBE_API_SERVICE_NAME = "youtube"
 YOUTUBE_API_VERSION = "v3"
 
 def guestbook_key(guestbook_name=DEFAULT_GUESTBOOK_NAME):
-    """Constructs a Datastore key for a Guestbook entity.
 
-    We use guestbook_name as the key.
-    """
     return ndb.Key('Guestbook', guestbook_name)
 
 class Author(ndb.Model):
@@ -270,7 +267,7 @@ class YoutubeHandler(webapp2.RequestHandler):
         search_response = youtube.search().list(
              q= self.request.get('q'),
              part="id,snippet",
-             maxResults=15 ).execute()
+             maxResults=3 ).execute() #change Youtube videos per page
 
         videos = []
         vid_titles = []
