@@ -14,11 +14,20 @@
     <a href="/FinAid"><i class="fa fa-money"></i></a> <!--FINANCAIL AID -->
   </div>
 <a href="{{ url|safe }}" class="btn">{{ url_linktext }}</a>
-    <h1>Youtube</h1>
-    <form action="https://www.youtube.com/results?search_query={{q}}">
-        <input type="text" name='search_query' placeholder="Search"></input></h3>
-        <input type="submit" value="Search"/>
-    </form>
+p>Search for a video here</p>
+<form method="get">
+  <p>
+    <input name="q" size="30">
+  </p>
+  <p><input type="submit"/></p>
+</form>
+
+{% for vid in videos %}
+<center><iframe width="700" height="500"
+  src="https://www.youtube.com/embed/{{vid}}">
+</iframe></center>
+{% endfor %}
+
 
 
   </body>

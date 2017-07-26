@@ -20,6 +20,9 @@ import os
 import urllib
 import webapp2
 
+from googleapiclient.discovery import build
+from optparse import OptionParser
+
 from google.appengine.api import users
 from google.appengine.ext import ndb
 
@@ -30,6 +33,9 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     autoescape=True)
 
 DEFAULT_GUESTBOOK_NAME = 'Anon'
+DEVELOPER_KEY = "AIzaSyDbWycrphLyYoD9OJl_dPkCq7P8lV3dhek"
+YOUTUBE_API_SERVICE_NAME = "youtube"
+YOUTUBE_API_VERSION = "v3"
 
 def guestbook_key(guestbook_name=DEFAULT_GUESTBOOK_NAME):
     """Constructs a Datastore key for a Guestbook entity.
@@ -257,13 +263,41 @@ class YoutubeHandler(webapp2.RequestHandler):
             url = users.create_login_url(self.request.uri)
             url_linktext = 'Login'
 
-        search_term = self.request.get('q')
+        youtube = build(
+        YOUTUBE_API_SERVICE_NAME,
+        YOUTUBE_API_VERSION,
+        developerKey=DEVELOPER_KEY)
+        search_response = youtube.search().list(
+             q= self.request.get('q'),
+             part="id,snippet",
+             maxResults=15 ).execute()
+
+        videos = []
+        vid_titles = []
+        channels = []
+        playlists = []
+
+        for search_result in search_response.get("items", []):
+            if search_result["id"]["kind"] == "youtube#video":
+                vid_titles.append("%s" % search_result["snippet"]["title"])
+                videos.append("%s" % search_result["id"]["videoId"])
+            elif search_result["id"]["kind"] == "youtube#channel":
+                channels.append("%s (%s)" % (search_result["snippet"]["title"],
+                search_result["id"]["channelId"]))
+            elif search_result["id"]["kind"] == "youtube#playlist":
+                playlists.append("%s (%s)" % (search_result["snippet"]["title"],
+                search_result["id"]["playlistId"]))
+
+        template_values = {
+            'videos': videos,
+            'vid_titles': vid_titles,
+            'channels': channels,
+            'playlists': playlists
+           }
+
+        self.response.headers['Content-type'] = 'text/html'
         template = env.get_template('youtube.html')
-        my_vars = { 'q': search_term,
-        'user': user,
-        'url': url,
-        'url_linktext': url_linktext, }
-        self.response.out.write(template.render(my_vars))
+        self.response.out.write(template.render(template_values))
 
         user = users.get_current_user()
         if user:
