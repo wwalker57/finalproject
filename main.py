@@ -307,7 +307,17 @@ class YoutubeHandler(webapp2.RequestHandler):
             url = users.create_login_url(self.request.uri)
             url_linktext = 'Login'
 
+class ZariHandler(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template('zari.html')
 
+class WillHandler(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template('will.html')
+
+class CamilleHandler(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template('camille.html')
 
 
 app = webapp2.WSGIApplication([
@@ -318,7 +328,9 @@ app = webapp2.WSGIApplication([
     ('/Resources', ResourcesHandler),
     ('/Comments', GreetingHandler),
     ('/sign', Guestbook),
-
+    ('/Zari', ZariHandler),
+    ('/Will', WillHandler),
+    ('/Camille', CamilleHandler),
 
 
 
