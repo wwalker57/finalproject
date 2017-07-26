@@ -3,18 +3,23 @@
 <html>
   <head>
     <link rel="stylesheet" href="/Resources/finalproject.css">
+    <link rel="stylesheet" href="/Resources/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Zilla+Slab" rel="stylesheet">
   </head>
   <body>
-    <a href="{{ url|safe }}" class="btn">{{ url_linktext }}</a>
-    <div class="icon-bar">
-      <a class="active" href="/"><i class="fa fa-home"></i></a> <!--HOME PAGE -->
-      <a href="/About"><i class="fa fa-user" aria-hidden="true"></i></a> <!--ABOUT PAGE -->
-      <a href="/Resources"><i class="fa fa-globe"></i></a> <!--Resources PAGE -->
-      <a href="/Youtube"><i class="a fa-video-camera"></i></a> <!--YOUTUBE PAGE -->
-      <a href="/FinAid"><i class="fa fa-money"></i></a> <!--FINANCAIL AID -->
-    </div>
+    <<div id="fixedheader"><a href="{{ url|safe }}" class="btn">{{ url_linktext }}</a></div>
+    <img id = "logo" src="Resources/logo.jpg" width: "100%"/>
+    <br>
+    <ul id="nav">
+        <li><a href="/"><img src="/Resources/button.png" width="45" height="42" title="home" ></a></li>
+        <li><a href="/About"><img src="/Resources/user.png" width="45" height="42" title="about" ></a></li>
+        <li><a href="/Resources"><img src="/Resources/youtube.png" width="45" height="42" title="youtube" ></a></li>
+        <li><a href="/Youtube"><img src="/Resources/resources.png" width="45" height="42" title="resources" ></a></li>
+        <li><a href="/FinAid"><img src="/Resources/finaid.png" width="45" height="42" title="resources" ></a></li>
+      </ul>
+<br>
+<br>
 <br>
 <br>
     <div class="container">
