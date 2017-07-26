@@ -103,7 +103,7 @@ class Guestbook(webapp2.RequestHandler):
         self.redirect('/Comments')
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        template = env.get_template('main.html')
+        template = env.get_template('home.html')
 
         user = users.get_current_user()
         if user:
