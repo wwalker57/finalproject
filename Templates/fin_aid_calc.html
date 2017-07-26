@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+  <head>
+    <title>STUE - Financial Aid Calculator</title>
+    <link rel="stylesheet" href="/Resources/finalproject.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Zilla+Slab" rel="stylesheet">
+  </head>
+
+<body>
+  <div class="icon-bar">
+    <a class="active" href="/"><i class="fa fa-home"></i></a> <!--HOME PAGE -->
+    <a href="/About"><i class="fa fa-user" aria-hidden="true"></i></a> <!--ABOUT PAGE -->
+    <a href="/Resources"><i class="fa fa-globe"></i></a> <!--Resources PAGE -->
+    <a href="/Youtube"><i class="a fa-video-camera"></i></a> <!--YOUTUBE PAGE -->
+    <a href="/FinAid"><i class="fa fa-money"></i></a> <!--FINANCAIL AID -->
+  </div>
+
+  <img class="stuelogo" src="/Resources/STUE_LOGO.png">
+      <h1 class="fin1">FINANCIAL AID CALCULATOR</h1>
+      <br>
+      <br>
+    <form method="post" action="">
+      <h2 clas> General Information</h2>
+      <table class="finaid">
+          <tr>
+            <td><input type="text" name="name"  placeholder="Your Name" ></input></td>
+          </tr>
+          <tr>
+            <td><input type="text" name="college" placeholder="College" ></input></td>
+          </tr>
+      </table>
+      <h2>Cost of Attendance</h2>
+        <p class="fin">For the best results, please input numbers only</p>
+      <table>
+        <tr>
+          <td><input type="number" name="Tuition" size="15"placeholder="Tuition" required></input></td>
+        </tr>
+        <tr>
+          <td><input type="number" name="Meals" size="15" placeholder="Meals" required> </input></td>
+        </tr>
+        <tr>
+          <td><input type="number" name="Housing" size="20"placeholder="Living" required ></input></td>
+        </tr>
+        <tr>
+          <td><input type="number" name="Books" placeholder="Books" required></input></td>
+        </tr>
+        <tr>
+          <td><input type="number" name="Insurance" placeholder="Insurance" required></input></td>
+        </tr>
+        <tr>
+          <td><input type="number" name="Equipment"  placeholder="Equipment/Lab" required></input></td>
+        </tr>
+        <tr>
+          <td><input type="number" name="Transportation"  placeholder="Transporation" required></input></td>
+        </tr>
+        <tr>
+          <td><input type="number" name="Entertainment"  placeholder="Entertainment" required></input></td>
+        </tr>
+        <tr>
+          <td><input type="number" name="Other" placeholder="Other" required></input></td>
+        </tr>
+      </table>
+      <h2> Grants, Aid, &amp; Scholarships </h2>
+      <table>
+        <tr>
+          <td><input type="number" name="University" placeholder="Scholarships" required></input></td>
+        </tr>
+        <tr>
+          <td><input type="number" name="Pell" placeholder="Federal Pell Grant" required></input></td>
+        </tr>
+        <tr>
+            <td><input type="number" name="SEOG" placeholder="Federal SEOG Grant" required ></input></td>
+        </tr>
+        <tr>
+            <td><input type="number" name="Sub" placeholder="Subsidized Loans" required></input></td>
+        </tr>
+        <tr>
+            <td><input type="number" name="Unsub" placeholder="Unsubsidized Loans" required></input></td>
+        </tr>
+        <tr>
+            <td><input type="number" name="Parent" placeholder="Parental Contribution"></input></td>
+        </tr>
+        <tr>
+            <td><input type="number" name="Student" placeholder="Student Contribution"></input></td>
+        <tr>
+            <td><input type="number" name="AidOther" placeholder="Other Grants &amp; Loans"></input></td>
+        <tr>
+          <td><input type="submit" name="submit" value="Submit"></input></td>
+        </tr>
+
+      </table>
+    </form> <!--Financial Aid Calculator -->
+
+
+
+
+
+</body>
+
+</html>

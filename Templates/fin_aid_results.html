@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+  <head>
+    <title>STUE - Financial Aid Calculator</title>
+    <link rel="stylesheet" href="/Resources/finalproject.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Zilla+Slab" rel="stylesheet">
+  </head>
+
+<body>
+  <div class="icon-bar">
+    <a class="active" href="/"><i class="fa fa-home"></i></a> <!--HOME PAGE -->
+    <a href="/About"><i class="fa fa-user" aria-hidden="true"></i></a> <!--ABOUT PAGE -->
+    <a href="/Resources"><i class="fa fa-globe"></i></a> <!--Resources PAGE -->
+    <a href="/Youtube"><i class="a fa-video-camera"></i></a> <!--YOUTUBE PAGE -->
+    <a href="/FinAid"><i class="fa fa-money"></i></a> <!--FINANCAIL AID -->
+  </div>
+
+  <img class="stuelogo" src="/Resources/STUE_LOGO.png">
+      <h1 class="aboutstue">FINANCIAL AID RESULTS</h1>
+      <br>
+      <br>
+
+    <h2>General Information</h2>
+    <p class="fresult">Hi, {{name}}! This page reflects the values you inputed for charges at<br>
+                       {{college}}. The information enterted is only as accurate as the info<br>
+                       you provided. Thank you for using the STUE Calculator.</p>
+
+    <br>
+
+    <h2>COST OF ATTENDANCE</h2>
+      <table class="finresults">
+      <tr align="left">
+        <td class="finaidr" ><p class="fresult1">Tuition:<p></td>
+        <td align="finaidr"><p class="fresult1"> ${{Tuition}}</p></td>
+      </tr>
+      <tr>
+        <td><p class="fresult1">Meals:<p></td>
+        <td><p class="fresult1"> ${{Meals}}</p></td>
+      </tr>
+      <tr>
+        <td align="left"><p class="fresult1">Housing:<p></td>
+        <td><p class="fresult1"> ${{Housing}}</p></td>
+      </tr>
+      <tr>
+        <td><p class="fresult1">Books:<p></td>
+        <td><p class="fresult1">${{Books}}</p></td>
+      </tr>
+      <tr>
+        <td><p class="fresult1">Insurance:<p></td>
+        <td align="left"><p class="fresult1"> ${{Insurance}}</p></td>
+      </tr>
+      <tr>
+        <td><p class="fresult1">Transportation:</p></td>
+        <td><p class="fresult1">${{Transportation}}</p></td>
+      </tr>
+      <tr>
+        <td><p class="fresult1">Entertainment:</p></td>
+        <td><p class="fresult1">${{Entertainment}}</p></td>
+      </tr>
+      <tr>
+        <td><p class="fresult1">Other:</p></td>
+        <td><p class="fresult1"> ${{Other}}</p></td>
+      </tr>
+      <tr>
+        <td><p class="fresult2"><strong>TOTAL COA:</p></td>
+        <td><p class="fresult2">${{coa}}</strong></p></td>
+      </tr>
+    </table>
+
+    <h2> GRANTS, AID, &amp; SCHOLARSHIPS</h2>
+      <table>
+        <tr>
+          <td><p class="fresult1">Scholarships:</td></p>
+          <td><p class="fresult1"> ${{University}}</td></p>
+        </tr>
+        <tr>
+          <td><p class="fresult1">Federal Pell Grant:</td></p>
+          <td><p class="fresult1"> ${{Pell}}</p></td>
+        </tr>
+        <tr>
+          <td><p class="fresult1">Federal SEOG Grant:</p></td>
+          <td><p class="fresult1"> ${{SEOG}}</p></td>
+        </tr>
+        <tr>
+          <td><p class="fresult1">Direct Subsidized Loans:</p></td>
+          <td><p class="fresult1"> ${{Sub}}</p></td>
+        </tr>
+        <tr>
+          <td><p class="fresult1">Direct Unsubsidized Loans:</td></p>
+          <td><p class="fresult1">${{Unsub}}</p></td>
+        </tr>
+        <tr>
+          <td><p class="fresult1">Parental Contribution:</td></p>
+          <td><p class="fresult1">${{Parent}}</td></p>
+        </tr>
+        <tr>
+          <td><p class="fresult1">Student Contribution:</td></p>
+          <td><p class="fresult1">${{Student}}</p></td>
+        </tr>
+        <tr>
+          <td><p class="fresult1">Other Aid:</td></p>
+          <td><p class="fresult1">${{AidOther}}</td></p>
+        </tr>
+        <tr>
+          <td><p class="fresult2"><strong>TOTAL AID:</p></td>
+          <td><p class="fresult2"> ${{aid}}</strong></td></p>
+        </tr>
+    </table>
+
+    <p class="fresult2"> Your remaining balance is: ${{bal}}</p>
+
+
+
+
+
+
+
+
+
+
+</body>
