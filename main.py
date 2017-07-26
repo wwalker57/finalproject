@@ -270,7 +270,7 @@ class YoutubeHandler(webapp2.RequestHandler):
         search_response = youtube.search().list(
              q= self.request.get('q'),
              part="id,snippet",
-             maxResults=15 ).execute()
+             maxResults=3 ).execute()
 
         videos = []
         vid_titles = []
