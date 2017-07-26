@@ -13,7 +13,7 @@
     <a href="/Youtube"><i class="a fa-video-camera"></i></a> <!--YOUTUBE PAGE -->
     <a href="/FinAid"><i class="fa fa-money"></i></a> <!--FINANCAIL AID -->
   </div>
-
+<a href="{{ url|safe }}" class="btn">{{ url_linktext }}</a>
     <h1>Youtube</h1>
     <form action="https://www.youtube.com/results?search_query={{q}}">
         <input type="text" name='search_query' placeholder="Search"></input></h3>

@@ -24,25 +24,141 @@ from google.appengine.api import users
 from google.appengine.ext import ndb
 
 env = jinja2.Environment(loader=jinja2.FileSystemLoader('Templates'))
+JINJA_ENVIRONMENT = jinja2.Environment(
+    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
+    extensions=['jinja2.ext.autoescape'],
+    autoescape=True)
 
+DEFAULT_GUESTBOOK_NAME = 'Anon'
+
+def guestbook_key(guestbook_name=DEFAULT_GUESTBOOK_NAME):
+    """Constructs a Datastore key for a Guestbook entity.
+
+    We use guestbook_name as the key.
+    """
+    return ndb.Key('Guestbook', guestbook_name)
+
+class Author(ndb.Model):
+    identity = ndb.StringProperty(indexed=False)
+    email = ndb.StringProperty(indexed=False)
+
+
+class Greeting(ndb.Model):
+    author = ndb.StructuredProperty(Author)
+    content = ndb.StringProperty(indexed=False)
+    date = ndb.DateTimeProperty(auto_now_add=True)
+
+class GreetingHandler(webapp2.RequestHandler):
+
+    def get(self):
+        guestbook_name = self.request.get('guestbook_name',
+                                          DEFAULT_GUESTBOOK_NAME)
+        greetings_query = Greeting.query(
+            ancestor=guestbook_key(guestbook_name)).order(-Greeting.date)
+        greetings = greetings_query.fetch(10)
+
+        user = users.get_current_user()
+        if user:
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
+        template_values = {
+            'user': user,
+            'greetings': greetings,
+            'guestbook_name': urllib.quote_plus(guestbook_name),
+            'url': url,
+            'url_linktext': url_linktext,
+        }
+
+        template = JINJA_ENVIRONMENT.get_template('/Templates/index.html')
+        self.response.write(template.render(template_values))
+
+
+    # [START guestbook]
+class Guestbook(webapp2.RequestHandler):
+
+    def post(self):
+        guestbook_name = self.request.get('guestbook_name',
+                                          DEFAULT_GUESTBOOK_NAME)
+        greeting = Greeting(parent=guestbook_key(guestbook_name))
+
+        if users.get_current_user():
+            greeting.author = Author(
+                    identity=users.get_current_user().user_id(),
+                    email=users.get_current_user().email())
+
+        greeting.content = self.request.get('content')
+        greeting.put()
+
+        query_params = {'guestbook_name': guestbook_name}
+        self.redirect('/Comments')
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('main.html')
-        self.response.out.write(template.render())
+
+        user = users.get_current_user()
+        if user:
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
+        my_vars = {
+        'user': user,
+        'url': url,
+        'url_linktext': url_linktext, }
+
+        self.response.out.write(template.render(my_vars))
 
 class AboutHandler(webapp2.RequestHandler):
     def get(self):
         template=env.get_template('about.html')
-        self.response.out.write(template.render())
+        user = users.get_current_user()
+        if user:
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
 
+        my_vars = {
+        'user': user,
+        'url': url,
+        'url_linktext': url_linktext, }
 
+        self.response.out.write(template.render(my_vars))
 
 class FinAidHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('fin_aid_calc.html')
-        self.response.out.write(template.render())
+
+        user = users.get_current_user()
+        if user:
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
+        my_vars = {
+        'user': user,
+        'url': url,
+        'url_linktext': url_linktext, }
+
+        self.response.out.write(template.render(my_vars))
 
     def post(self):
+        user = users.get_current_user()
+        if user:
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
 
         name = self.request.get("name")
         college = self.request.get("college")
@@ -92,7 +208,10 @@ class FinAidHandler(webapp2.RequestHandler):
             'AidOther': aidOther,
             'coa' : coa,
             'aid': aid,
-            'bal' : bal}
+            'bal' : bal,
+            'user': user,
+            'url': url,
+            'url_linktext': url_linktext,}
 
 
         template = env.get_template('fin_aid_results.html')
@@ -105,19 +224,56 @@ class ResourcesHandler(webapp2.RequestHandler):
         template = env.get_template('resources.html')
         self.response.out.write(template.render())
 
+
     def get (self):
         search_term = self.request.get('q')
         template = env.get_template('resources.html')
-        my_vars = { 'q': search_term }
+
+        user = users.get_current_user()
+        if user:
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
+        my_vars = {
+        'user': user,
+        'url': url,
+        'url_linktext': url_linktext,
+        'q': search_term }
+
         self.response.out.write(template.render(my_vars))
 
 
 class YoutubeHandler(webapp2.RequestHandler):
     def get (self):
+
+        user = users.get_current_user()
+        if user:
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
         search_term = self.request.get('q')
         template = env.get_template('youtube.html')
-        my_vars = { 'q': search_term }
+        my_vars = { 'q': search_term,
+        'user': user,
+        'url': url,
+        'url_linktext': url_linktext, }
         self.response.out.write(template.render(my_vars))
+
+        user = users.get_current_user()
+        if user:
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
+
 
 
 app = webapp2.WSGIApplication([
@@ -126,6 +282,8 @@ app = webapp2.WSGIApplication([
     ('/About', AboutHandler),
     ('/Youtube', YoutubeHandler),
     ('/Resources', ResourcesHandler),
+    ('/Comments', GreetingHandler),
+    ('/sign', Guestbook),
 
 
 
