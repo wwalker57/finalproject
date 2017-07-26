@@ -7,7 +7,10 @@
     <link href="https://fonts.googleapis.com/css?family=Zilla+Slab" rel="stylesheet">
   </head>
 <body>
+
 <div id="fixedheader">Hello, random user</div>
+<a href="{{ url|safe }}" class="btn">{{ url_linktext }}</a>
+
 <img id = "logo" src="Resources/logo.jpg" width: "100%"/>
 <br>
 <ul id="nav">
@@ -18,6 +21,20 @@
     <li><a href="/FinAid"><img src="/Resources/finaid.png" width="45" height="42" title="resources" ></a></li>
   </ul>
 <br>
+
+<p>Search for a video here</p>
+<form method="get">
+  <p>
+    <input name="q" size="30">
+  </p>
+  <p><input type="submit"/></p>
+</form>
+
+{% for vid in videos %}
+<center><iframe width="700" height="500"
+  src="https://www.youtube.com/embed/{{vid}}">
+</iframe></center>
+{% endfor %}
 
 
   </body>
