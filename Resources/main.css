@@ -1,0 +1,167 @@
+@font-face {
+font-family: 'Sifonn Pro';
+font-style: normal;
+font-weight: normal;
+src: local('Sifonn Pro'), url('SIFONN_PRO.woff') format('woff');
+}
+
+body {
+  background-color: white;
+  /*background-image: url("slide.jpg");*/
+  margin:80px 80px 100px 100px;
+}
+div#fixedheader {
+  position:fixed;
+  top:0px;
+  left:0px;
+  width:100%;
+  color:white;
+  background:#4484CE;
+  padding:10px;
+  text-align:right;
+}
+
+#nav {
+  float: right
+  position: fixed;
+  right: 0;
+  width: 100%
+  list-style-type: none;
+  bottom:0
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: transparent
+}
+#nav li {
+  display: inline-block;
+  list-style-type: none;
+  float:right
+}
+
+#nav li a {
+  display: block;
+  color: gray;
+  text-align: center;
+  padding: 7px 10px;
+  text-decoration: none;
+  list-style-type: none;
+  font-family: Tahoma
+}
+
+#nav li a:hover {
+  background-color: white
+}
+
+#logo {
+  float:left
+}
+
+.fin1{text-align:right;
+font-family: 'Zilla Slab', serif;
+}
+
+.aboutstue{text-align:right;
+font-family: 'Zilla Slab', serif;
+}
+
+h2{text-align:center;
+line-height: .2;
+font-family: 'Zilla Slab', serif;
+}
+
+.khansearch{
+  display:inline;
+  text-align:center;
+  align-items: center;
+   margin:0px auto;
+   width:100px;
+}
+
+.khansub{
+  background-color:#4484CE;
+  font-family: 'Zilla Slab', serif;
+}
+
+.abh2{text-align:center;
+font-family: 'Zilla Slab', serif;
+}
+.fresult{
+  font-family: 'Zilla Slab', serif;
+  text-align:center;
+
+}
+
+.fresult1{
+  font-family: 'Zilla Slab', serif;
+  text-align:center;
+  line-height: .2;
+
+}
+
+.fresult2{
+  font-family: 'Zilla Slab', serif;
+  text-align:center;
+  line-height: .2;
+  font-size:30px;
+}
+
+.finaid{
+  align:left;
+  vertical-align: bottom;
+
+}
+
+
+table{margin-left:auto;
+margin-right:auto;}
+
+.stueablogo{
+  height:500px;
+  width:500px;
+  display:block;
+  margin:auto;
+}
+
+.khanlogo{display:block;
+  margin:auto;
+}
+
+.mainlogo{
+
+  display:block !important;
+  margin:auto;
+}
+
+.abp{
+font-family: 'Zilla Slab', serif;
+text-align:center;}
+
+
+
+
+.fin{
+  text-align:center;
+  font-family: 'Zilla Slab', serif;
+  line-height:.2
+}
+
+.stuelogo{
+  height:75px;
+  width:75px;
+  float:left;
+}
+
+.tda{text-align:center;
+font-family: 'Zilla Slab', serif;
+
+}
+
+.tda1{text-align:center;
+font-family: 'Zilla Slab', serif;
+color:#bbb;
+
+}
+* {box-sizing:border-box}
+
+* {box-sizing:border-box}
