@@ -23,30 +23,9 @@
 <br>
 <hr>
 
-<div class="form">
-    <div class="container">
-      <!-- [START greetings] -->
-      {% for greeting in greetings %}
-      <div class="row">
-        {% if greeting.author %}
-          <b>{{ greeting.author.email }}
-            {% if user and user.user_id() == greeting.author.identity %}
-              (You)
-            {% endif %}
-          </b> wrote:
-        {% else %}
-          An anonymous person wrote:
-        {% endif %}
-        <blockquote>{{ greeting.content }}</blockquote>
-      </div>
-      {% endfor %}
-      <!-- [END greetings] -->
-      <br>
-      <br>
-      <a href="{{ url|safe }}">{{ url_linktext }}</a>
-    </div>
+<p><strong>To utalize this feature of STUE, you must sign in with a google affiliated account</p></strong>
     <iframe src="https://calendar.google.com/calendar/embed?src={{user}}%40gmail.com"
-    style="border: 0" width="800" height="600" frameborder="0" scrolling="no">
+    style="border: 0" width="1250" height="600" frameborder="0" scrolling="yes">
     </iframe>
   </body>
 </div>

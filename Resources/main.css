@@ -207,3 +207,8 @@ form
     margin-right: auto;
     text-align: left;
 }
+
+.homepic{
+  display:flex;
+  margin: 0px auto;
+}
