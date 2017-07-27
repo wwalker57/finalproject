@@ -316,6 +316,24 @@ class CamilleHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('camille.html')
 
+class CalendarHandler(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template('planner.html')
+        user = users.get_current_user()
+        if user:
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
+        my_vars = {
+            'user': user,
+            'url': url,
+            'url_linktext': url_linktext }
+
+        self.response.out.write(template.render(my_vars))
+
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
@@ -328,6 +346,7 @@ app = webapp2.WSGIApplication([
     ('/Zari', ZariHandler),
     ('/Will', WillHandler),
     ('/Camille', CamilleHandler),
+    ('/Calendar', CalendarHandler),
 
 
 ], debug=True)
