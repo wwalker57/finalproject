@@ -57,7 +57,16 @@ div#fixedheader {
   float:left
 }
 
+#searchform p {
+  align-items: center;
+}
+
 .fin1{
+  text-align: center;
+  font-family: 'Zilla Slab', serif;
+}
+
+.searchvideo{
   text-align: center;
   font-family: 'Zilla Slab', serif;
 }
@@ -169,7 +178,15 @@ color:#bbb;
 
 * {box-sizing:border-box}
 
-#div {
-  height: 0px;
-  border-bottom: solid 2px black;
+div.form
+{
+    display: block;
+    text-align: center;
+}
+form
+{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
 }
