@@ -57,18 +57,20 @@ div#fixedheader {
   float:left
 }
 
-.fin1{text-align:right;
-font-family: 'Zilla Slab', serif;
+.fin1{
+  text-align: center;
+  font-family: 'Zilla Slab', serif;
 }
 
-.aboutstue{text-align:right;
-font-family: 'Zilla Slab', serif;
+.aboutstue{
+  text-align: center;
+  font-family: 'Zilla Slab', serif;
 }
 
 h2{
-text-align:center;
-line-height: .2;
-font-family: 'Zilla Slab', serif;
+  text-align:center;
+  line-height: .2;
+  font-family: 'Zilla Slab', serif;
 }
 
 .khansearch{
@@ -166,3 +168,8 @@ color:#bbb;
 * {box-sizing:border-box}
 
 * {box-sizing:border-box}
+
+#div {
+  height: 0px;
+  border-bottom: solid 2px black;
+}
