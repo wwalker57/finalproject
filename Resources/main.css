@@ -217,10 +217,7 @@ form
     text-align: left;
 }
 
-.left {
-  float: left;
-}
-
-.right{
-  float: right;
+.homepic{
+  display:flex;
+  margin: 0px auto;
 }
