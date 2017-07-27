@@ -307,14 +307,17 @@ class YoutubeHandler(webapp2.RequestHandler):
 class ZariHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('zari.html')
+        self.response.out.write(template.render())
 
 class WillHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('will.html')
+        self.response.out.write(template.render())
 
 class CamilleHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('camille.html')
+        self.response.out.write(template.render())
 
 class CalendarHandler(webapp2.RequestHandler):
     def get(self):
@@ -347,6 +350,4 @@ app = webapp2.WSGIApplication([
     ('/Will', WillHandler),
     ('/Camille', CamilleHandler),
     ('/Calendar', CalendarHandler),
-
-
 ], debug=True)
