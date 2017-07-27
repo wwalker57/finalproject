@@ -7,16 +7,8 @@ src: local('Sifonn Pro'), url('SIFONN_PRO.woff') format('woff');
 
 @font-face {
    font-family: 'Open Sans Light';
-   font-style: normal;
    font-weight: 300;
    src:url(https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTRa1RVmPjeKy21_GQJaLlJI.woff) format('woff');
-}
-
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 600;
-src:url(https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTRa1RVmPjeKy21_GQJaLlJI.woff) format('woff');
 }
 
 body {
@@ -77,23 +69,23 @@ div#fixedheader {
 
 .fin1{
   text-align: center;
-  font-family: 'Zilla Slab', serif;
+  font-family: 'open sans light', serif;
 }
 
 .searchvideo{
   text-align: center;
-  font-family: 'Zilla Slab', serif;
+  font-family: 'open sans light', serif;
 }
 
 .aboutstue{
   text-align: center;
-  font-family: 'Open Sans',
+  font-family: 'Open Sans light',
 }
 
 h2{
   text-align:center;
   line-height: .2;
-  font-family: 'Zilla Slab', serif;
+  font-family: 'open sans light', serif;
 }
 
 .khansearch{
@@ -106,27 +98,27 @@ h2{
 
 .khansub{
   background-color:#4484CE;
-  font-family: 'Zilla Slab', serif;
+  font-family: 'open sans light', serif;
 }
 
 .abh2{text-align:center;
-font-family: 'Zilla Slab', serif;
+font-family: 'open sans light', serif;
 }
 .fresult{
-  font-family: 'Zilla Slab', serif;
+  font-family: 'open sans light', serif;
   text-align:center;
 
 }
 
 .fresult1{
-  font-family: 'Zilla Slab', serif;
+  font-family: 'open sans light', serif;
   text-align:center;
   line-height: .2;
 
 }
 
 .fresult2{
-  font-family: 'Zilla Slab', serif;
+  font-family: 'open sans light', serif;
   text-align:center;
   line-height: .2;
   font-size:30px;
@@ -165,12 +157,29 @@ text-align:center;
 color: #3b3b3b;
 }
 
+.abp1{
+font-family: 'Open Sans Light';
+font-weight: 600;
+color: #3b3b3b;
+}
+
+.abp2{
+font-family: 'Open Sans Light';
+margin-left: 2em
+color: #3b3b3b;
+}
+
+.about {
+  align: center;
+  float: left;
+}
+
 
 
 
 .fin{
   text-align:center;
-  font-family: 'Zilla Slab', serif;
+  font-family: 'open sans light', serif;
   line-height:.2
 }
 
@@ -187,7 +196,7 @@ font-size: 13px
 }
 
 .tda1{text-align:center;
-font-family: 'Zilla Slab', serif;
+font-family: 'open sans light', serif;
 color:black;
 
 }
@@ -206,4 +215,12 @@ form
     margin-left: auto;
     margin-right: auto;
     text-align: left;
+}
+
+.left {
+  float: left;
+}
+
+.right{
+  float: right;
 }
