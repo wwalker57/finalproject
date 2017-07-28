@@ -251,15 +251,6 @@ class ResourcesHandler(webapp2.RequestHandler):
 
 class YoutubeHandler(webapp2.RequestHandler):
     def get (self):
-
-        user = users.get_current_user()
-        if user:
-            url = users.create_logout_url(self.request.uri)
-            url_linktext = 'Logout'
-        else:
-            url = users.create_login_url(self.request.uri)
-            url_linktext = 'Login'
-
         youtube = build(
         YOUTUBE_API_SERVICE_NAME,
         YOUTUBE_API_VERSION,
@@ -296,6 +287,44 @@ class YoutubeHandler(webapp2.RequestHandler):
         template = env.get_template('youtube.html')
         self.response.out.write(template.render(template_values))
 
+        # user = users.get_current_user()
+        # if user:
+        #     url = users.create_logout_url(self.request.uri)
+        #     url_linktext = 'Logout'
+        # else:
+        #     url = users.create_login_url(self.request.uri)
+        #     url_linktext = 'Login'
+        #
+        # my_vars = {
+        # 'user': user,
+        # 'url': url,
+        # 'url_linktext': url_linktext, }
+        #
+        # self.response.out.write(template.render(my_vars))
+def get (self):
+    search_term = self.request.get('q')
+    template = env.get_template('resources.html')
+
+    user = users.get_current_user()
+    if user:
+        url = users.create_logout_url(self.request.uri)
+        url_linktext = 'Logout'
+    else:
+        url = users.create_login_url(self.request.uri)
+        url_linktext = 'Login'
+
+    my_vars = {
+    'user': user,
+    'url': url,
+    'url_linktext': url_linktext,
+    'q': search_term }
+
+    self.response.out.write(template.render(my_vars))
+
+
+class ZariHandler(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template('zari.html')
         user = users.get_current_user()
         if user:
             url = users.create_logout_url(self.request.uri)
@@ -304,20 +333,52 @@ class YoutubeHandler(webapp2.RequestHandler):
             url = users.create_login_url(self.request.uri)
             url_linktext = 'Login'
 
-class ZariHandler(webapp2.RequestHandler):
-    def get(self):
-        template = env.get_template('zari.html')
-        self.response.out.write(template.render())
+        my_vars = {
+        'user': user,
+        'url': url,
+        'url_linktext': url_linktext, }
+
+        self.response.out.write(template.render(my_vars))
+
+
 
 class WillHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('will.html')
-        self.response.out.write(template.render())
+        user = users.get_current_user()
+        if user:
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
+        my_vars = {
+        'user': user,
+        'url': url,
+        'url_linktext': url_linktext, }
+
+        self.response.out.write(template.render(my_vars))
+
 
 class CamilleHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('camille.html')
-        self.response.out.write(template.render())
+        user = users.get_current_user()
+        if user:
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+
+        my_vars = {
+        'user': user,
+        'url': url,
+        'url_linktext': url_linktext, }
+
+        self.response.out.write(template.render(my_vars))
+
 
 class CalendarHandler(webapp2.RequestHandler):
     def get(self):

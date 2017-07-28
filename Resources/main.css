@@ -96,10 +96,10 @@ h2{
    width:100px;
 }
 
-.khansub{
+/*.khansub{
   background-color:#4484CE;
   font-family: 'open sans light', serif;
-}
+}*/
 
 .abh2{text-align:center;
 font-family: 'open sans light', serif;
@@ -169,11 +169,22 @@ margin-left: 2em
 color: #3b3b3b;
 }
 
+.abp3{
+font-family: 'Open Sans Light';
+float: right;
+color: #3b3b3b;
+}
+
+
 .about {
   align: center;
   float: left;
 }
 
+.nobullets {
+  list-style-type: none;
+  font-family: 'Open Sans Light'
+}
 
 
 
